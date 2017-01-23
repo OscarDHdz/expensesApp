@@ -2,13 +2,16 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
 
   $scope.arrayByGroups = [];
   $scope.peopleGroups = {};
+  $scope.peopleGroupsAmounts = {};
   $scope.setGroups = function () {
     var temporalGroups = {};
+    var temporalGroupsAmounts = {};
     for( var i = 0; i < $scope.expenses.length; i++ ) {
       /*TODO: if ( $scope.expenses[i].users.length === $scope.availableUsers.length ){
         $scope.expenses[i].users = 'All';
       }*/
       if ( temporalGroups[$scope.expenses[i].users.toString()] === undefined ){
+
         temporalGroups[ $scope.expenses[i].users.toString() ] = [
             {
               title: $scope.expenses[i].title,
@@ -16,6 +19,10 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
               amount: $scope.expenses[i].amount
             }
         ];
+
+        // TODO: Set Group Total amount
+        temporalGroupsAmounts[ $scope.expenses[i].users.toString()] = $scope.expenses[i].amount;
+
       }
       else {
         temporalGroups[ $scope.expenses[i].users.toString() ].push(
@@ -25,12 +32,20 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
               amount: $scope.expenses[i].amount
             }
           );
+
+
+        // TODO: Add Group Total amount
+        temporalGroupsAmounts[ $scope.expenses[i].users.toString() ] += $scope.expenses[i].amount;
       }
+
+      temporalGroups[ $scope.expenses[i].users.toString() ]
 
     }
 
-    console.log(temporalGroups);
     $scope.peopleGroups = temporalGroups;
+    $scope.peopleGroupsAmounts = temporalGroupsAmounts;
+    console.log($scope.peopleGroupsAmounts);
+
   }
 
   $scope.getOwedMoneyFromBy = function ( by ) {

@@ -33,7 +33,10 @@
         <td class="fitColumn">{{ expense.id }}</td>
         <td>{{ expense.title }}</td>
         <td>{{ expense.amount | currency }}</td>
-        <td><span ng-repeat="user in expense.users">{{ user }} <br></span></td>
+        <td>
+          <span ng-if="expense.users.length < availableUsers.length" ng-repeat="user in expense.users">{{ user }}<br></span>
+          <span ng-if="expense.users.length === availableUsers.length">All<br></span>
+        </td>
         <td class="slimColumnx2">{{ expense.from }}</td>
         <td class="slimColumn alignCenter"><a href="" ng-click="removeExpenseFromExpenses( expense )"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
       </tr>

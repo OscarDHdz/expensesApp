@@ -61,4 +61,14 @@
 
 
 </body>
+<script>
+  function keyDown(e){
+
+    e.preventDefault();
+    if((e.ctrlKey)&&(e.keyCode == 79)){
+        $('.inputFile').click();
+    }
+  }
+  $("body").bind("keydown",keyDown);
+</script>
 </html>
