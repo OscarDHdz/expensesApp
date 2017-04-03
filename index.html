@@ -69,6 +69,11 @@
         $('.inputFile').click();
         e.preventDefault();
     }
+    if((e.ctrlKey)&&(e.keyCode == 83)){
+        $('#saveButton').click();
+        e.preventDefault();
+    }
+
 
   }
   $("body").bind("keydown",keyDown);
