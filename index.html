@@ -64,10 +64,12 @@
 <script>
   function keyDown(e){
 
-    e.preventDefault();
+
     if((e.ctrlKey)&&(e.keyCode == 79)){
         $('.inputFile').click();
+        e.preventDefault();
     }
+
   }
   $("body").bind("keydown",keyDown);
 </script>
