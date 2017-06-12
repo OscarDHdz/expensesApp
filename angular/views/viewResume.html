@@ -38,40 +38,8 @@
     </div>
     -->
 
-    <!-- Owe by Totals -->
-    <div class="col-xs-12  col-md-4 ">
-      <h3 class="">Pay to</h3>
-      <hr>
-
-
-      <div class="col-wells" ng-repeat="(person, data) in finalTotals" >
-
-        <div class="well greenBorder2 noBackGround">
-          <h4 class="">{{ person }}</h4>
-          <table class="table table-striped">
-            <tr>
-              <th>To</th>
-              <th class="slimColumn alignRightFormat">Amount</th>
-            </tr>
-            <tr ng-repeat="(to, amount) in data" >
-              <td > {{ to }}</td>
-              <td class="slimColumn alignRightFormat">{{ amount | currency }}</td>
-            </tr>
-
-          </table>
-
-        </div>
-
-
-
-      </div>
-
-
-
-    </div>
-
     <!-- Owe by Groups -->
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-5">
       <h3 class="">Owed by Groups</h3>
       <hr>
 
@@ -100,7 +68,6 @@
       </div>
 
     </div>
-
     <!-- Owe by Person -->
     <div class="col-xs-12 col-md-4">
       <h3 class="">Owed by Person</h3>
@@ -132,6 +99,39 @@
 
 
     </div>
+    <!-- Owe by Totals -->
+    <div class="col-xs-12  col-md-3 ">
+      <h3 class="">Pay to</h3>
+      <hr>
+
+
+      <div class="col-wells" ng-repeat="(person, data) in finalTotals" >
+
+        <div class="well greenBorder2 noBackGround">
+          <h4 class="">{{ person }}</h4>
+          <table class="table table-striped">
+            <tr>
+              <th>To</th>
+              <th class="slimColumn alignRightFormat">Amount</th>
+            </tr>
+            <tr ng-repeat="(to, amount) in data" >
+              <td > {{ to }}</td>
+              <td class="slimColumn alignRightFormat">{{ amount | currency }}</td>
+            </tr>
+
+          </table>
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
 
 
 
