@@ -36,6 +36,8 @@ app.controller('mainCtrl', [ '$scope', function( $scope ){
 
   ];
   $scope.expenses = [];
+  $scope.owesTo = {};
+  $scope.finalTotals = {  }
 
   // Global Funcions -----------------------------------------------------------
   $scope.saveLocalData = function () {

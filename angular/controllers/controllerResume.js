@@ -3,6 +3,8 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
   $scope.arrayByGroups = [];
   $scope.peopleGroups = {};
   $scope.peopleGroupsAmounts = {};
+
+
   $scope.setGroups = function () {
     var temporalGroups = {};
     var temporalGroupsAmounts = {};
@@ -70,6 +72,39 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
 
   $scope.setGroups();
 
+  $scope.setFinalTotalsPayTo = function ( ) {
+    $scope.owesTo = {};
+    for (var i = 0; i < $scope.availableUsers.length; i++) {
+      $scope.owesTo[$scope.availableUsers[i].name] = $scope.getOwedMoneyFromBy($scope.availableUsers[i].name);
+    }
+    console.log('Owes to:', $scope.owesTo);
+
+    $scope.finalTotals = {};
+    for (var person in $scope.owesTo) {
+      $scope.finalTotals[person] = {};
+      for (var owingTo in $scope.owesTo[person]) {
+        $scope.finalTotals[person][owingTo] = $scope.owesTo[person][owingTo];
+        // console.log(person, 'owes to', owingTo);
+        if ( $scope.owesTo[owingTo][person] ) {
+          // console.log(owingTo, 'also owes to', person);
+          $scope.finalTotals[person][owingTo]-=$scope.owesTo[owingTo][person];
+          // If person doesnt owe, remove it
+          if ( $scope.finalTotals[person][owingTo] <= 0 ) delete $scope.finalTotals[person][owingTo];
+        }
+      }
+
+    }
+    // Trimg peopile who dows not owe
+    for (var person in $scope.finalTotals) {
+      if ( Object.keys($scope.finalTotals[person]).length === 0 ) delete $scope.finalTotals[person];
+    }
+
+    console.log('Final totals:', $scope.finalTotals);
+
+
+
+  }
+  $scope.setFinalTotalsPayTo();
 
   $scope.exportResumeFor = function () {
 
@@ -109,6 +144,7 @@ app.controller('resumeCtrl', ['$scope',  function ( $scope ) {
   $scope.$on('readedDataFile', function(event, args) {
     console.log('Update Resume at Readed File ');
     $scope.setGroups();
+    $scope.setFinalTotalsPayTo();
     $scope.$apply();
   });
 
