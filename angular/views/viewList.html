@@ -58,7 +58,7 @@
         <!-- Amount -->
         <div class="form-group">
           <label for="">Amount</label>
-          <input  class="form-control" type="number" name="" value="" placeholder="$0.00" ng-model="currentExpense.amount">
+          <input id="amount" class="form-control" type="number" name="" value="" placeholder="$0.00" ng-model="currentExpense.amount">
         </div>
         <!-- Title -->
         <div class="form-group">
@@ -100,7 +100,7 @@
         <br>
         <br>
         <div id="actionResponse" style="position: absolute; right: 10%; bottom: 10%;" hidden>
-          <span  class="text-success" ng-show="requestSucces">Used Added</span>
+          <span  class="text-success" ng-show="requestSucces">Expense Added</span>
           <span  class="text-danger" ng-hide="requestSucces">User Already In</span>
         </div>
       </div>

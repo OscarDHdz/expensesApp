@@ -104,7 +104,7 @@ app.controller('listCtrl', ['$scope',  function ( $scope, focus ) {
 
     $scope.requestSucces = true;
     displayResponse();
-    $('#title').focus();
+    $('#amount').focus();
 
   }
 
